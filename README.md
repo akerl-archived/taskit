@@ -8,7 +8,7 @@ taskit
 [![Build Status](https://img.shields.io/travis/akerl/taskit.svg)](https://travis-ci.org/akerl/taskit)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
-SHORT_DESCRIPTION
+Simple terminal display for Github issues. Mainly, this is so I can easily find something to work on from my outstanding issues.
 
 ## Usage
 
