@@ -16,7 +16,7 @@ module Taskit
   ##
   # Tasks object holds and returns information on open issues
   class Tasks
-    attr_reader :issues, :client
+    attr_reader :issues
 
     def initialize(params = {})
       @client = _client(params)
