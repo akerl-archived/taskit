@@ -29,7 +29,8 @@ module Taskit
       auth = Octoauth.new(
         note: 'Taskit',
         api_endpoint: params[:api_endpoint],
-        file: :default
+        file: :default,
+        scopes: ['repo']
       )
       auth.save
       auth.token
