@@ -20,10 +20,21 @@ module Taskit
       @client = client(params)
     end
 
+    private
+
+    def token(params = {})
+      auth = Octoauth.new(
+        note: 'Taskit',
+        api_endpoint: params[:api_endpoint],
+        file: :default
+      )
+      auth.save
+      auth.token
+    end
+
     def client(params = {})
-      token = Octoauth.new note: 'Taskit', api_endpoint: params[:api_endpoint]
       Octokit::Client.new(
-        access_token: token,
+        access_token: token(params),
         api_endpoint: params[:api_endpoint],
         web_endpoint: params[:api_endpoint]
       )
