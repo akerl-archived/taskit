@@ -16,16 +16,21 @@ module Taskit
   ##
   # Tasks object holds and returns information on open issues
   class Tasks
-    attr_reader :issues
+    attr_reader :issues, :client
 
     def initialize(params = {})
-      @client = client(params)
-      @issues = client.issues(nil, filter: :all)
+      @client = _client(params)
+      @issues = @client.issues(nil, filter: :all)
     end
+
+    def to_s
+      "<Taskit::Tasks for #{@client.login}>"
+    end
+    alias_method :inspect, :to_s
 
     private
 
-    def token(params = {})
+    def _token(params = {})
       auth = Octoauth.new(
         note: 'Taskit',
         api_endpoint: params[:api_endpoint],
@@ -36,9 +41,9 @@ module Taskit
       auth.token
     end
 
-    def client(params = {})
+    def _client(params = {})
       Octokit::Client.new(
-        access_token: token(params),
+        access_token: _token(params),
         api_endpoint: params[:api_endpoint],
         web_endpoint: params[:api_endpoint],
         auto_paginate: true
