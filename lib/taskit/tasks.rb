@@ -16,8 +16,11 @@ module Taskit
   ##
   # Tasks object holds and returns information on open issues
   class Tasks
+    attr_reader :issues
+
     def initialize(params = {})
       @client = client(params)
+      @issues = client.issues(nil, filter: :all)
     end
 
     private
@@ -36,7 +39,8 @@ module Taskit
       Octokit::Client.new(
         access_token: token(params),
         api_endpoint: params[:api_endpoint],
-        web_endpoint: params[:api_endpoint]
+        web_endpoint: params[:api_endpoint],
+        auto_paginate: true
       )
     end
   end
