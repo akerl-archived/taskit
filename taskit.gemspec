@@ -12,8 +12,9 @@ Gem::Specification.new do |s|
 
   s.files       = `git ls-files`.split
   s.test_files  = `git ls-files spec/*`.split
+  s.executables = ['taskit']
 
-  s.add_dependency 'octokit', '~> 3.0'
+  s.add_dependency 'octokit', '~> 3.1.0'
 
   s.add_development_dependency 'rubocop', '~> 0.20.0'
   s.add_development_dependency 'rake', '~> 10.3.0'
