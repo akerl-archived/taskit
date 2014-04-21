@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.executables = ['taskit']
 
   s.add_dependency 'octokit', '~> 3.1.0'
+  s.add_dependency 'octoauth', '~> 0.0.2'
 
   s.add_development_dependency 'rubocop', '~> 0.20.0'
   s.add_development_dependency 'rake', '~> 10.3.0'
