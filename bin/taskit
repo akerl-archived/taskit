@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'taskit'
+
+tasks = Taskit.new
+p tasks.issues
