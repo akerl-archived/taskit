@@ -20,7 +20,9 @@ module Taskit
 
     def initialize(params = {})
       @client = _client(params)
-      @issues = Taskit::Issues.new @client.issues(nil, filter: :all)
+      @issues = @client.issues(nil, filter: :all).map do |issue|
+        Taskit::Issue.new issue
+      end
     end
 
     def to_s

@@ -11,29 +11,28 @@ module Taskit
                 :labels, :state
 
     def initialize(raw)
-      @raw = raw
-      load_repo_info
-      load_issue_info
-      load_state_info
+      load_repo_info raw
+      load_issue_info raw
+      load_state_info raw
     end
 
-    def load_repo_info
-      repo_info = @raw[:repository]
+    def load_repo_info(raw)
+      repo_info = raw[:repository]
       @repo = repo_info[:name]
       @repo_url = repo_info[:html_url]
       @owner = repo_info[:owner][:login]
     end
 
-    def load_issue_info
-      @url, @id, @number, @title, @body = @raw.values_at(
+    def load_issue_info(raw)
+      @url, @id, @number, @title, @body = raw.values_at(
         :html_url, :id, :number, :title, :body
       )
-      @reporter = @raw[:user][:login]
+      @reporter = raw[:user][:login]
     end
 
-    def load_state_info
-      @state = @raw[:state]
-      @labels = @raw[:labels].map { |x| ISSUE_LABEL.new(x[:name], x[:color]) }
+    def load_state_info(raw)
+      @state = raw[:state]
+      @labels = raw[:labels].map { |x| ISSUE_LABEL.new(x[:name], x[:color]) }
     end
   end
 end
