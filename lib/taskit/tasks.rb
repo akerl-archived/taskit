@@ -20,7 +20,7 @@ module Taskit
 
     def initialize(params = {})
       @client = _client(params)
-      @issues = @client.issues(nil, filter: :all)
+      @issues = Taskit::Issues.new @client.issues(nil, filter: :all)
     end
 
     def to_s
@@ -51,3 +51,5 @@ module Taskit
     end
   end
 end
+
+require 'taskit/tasks/issue.rb'
