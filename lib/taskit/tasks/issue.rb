@@ -24,7 +24,7 @@ module Taskit
     end
 
     def load_issue_info(raw)
-      @url, @id, @number, @title, @body = raw.values_at(
+      @url, @id, @number, @title, @body = raw.to_h.values_at(
         :html_url, :id, :number, :title, :body
       )
       @reporter = raw[:user][:login]
