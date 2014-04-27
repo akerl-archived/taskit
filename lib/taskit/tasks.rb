@@ -21,16 +21,11 @@ module Taskit
     attr_reader :issues
 
     def initialize(params = {})
-      params[:_issues] ? preload(params) : fetch(params)
+      @client = params[:client] || _client(params)
+      @issues = params[:issues] || fetch_issues
     end
 
-    def preload(params)
-      @client = nil
-      @issues = params[:_issues]
-    end
-
-    def fetch(params = {})
-      @client = _client(params)
+    def fetch_issues
       @issues = @client.issues(nil, filter: :all).map do |issue|
         Taskit::Issue.new issue
       end
@@ -64,6 +59,3 @@ module Taskit
     end
   end
 end
-
-require 'taskit/issue.rb'
-require 'taskit/filters.rb'

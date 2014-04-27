@@ -10,4 +10,6 @@ module Taskit
   end
 end
 
+require 'taskit/issue'
+require 'taskit/filters'
 require 'taskit/tasks'
