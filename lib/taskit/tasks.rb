@@ -16,9 +16,20 @@ module Taskit
   ##
   # Tasks object holds and returns information on open issues
   class Tasks
+    include Taskit::Filters
+
     attr_reader :issues
 
     def initialize(params = {})
+      params[:_issues] ? preload(params) : fetch(params)
+    end
+
+    def preload(params)
+      @client = nil
+      @issues = params[:_issues]
+    end
+
+    def fetch(params = {})
       @client = _client(params)
       @issues = @client.issues(nil, filter: :all).map do |issue|
         Taskit::Issue.new issue
@@ -54,4 +65,5 @@ module Taskit
   end
 end
 
-require 'taskit/tasks/issue.rb'
+require 'taskit/issue.rb'
+require 'taskit/filters.rb'
