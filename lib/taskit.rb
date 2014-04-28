@@ -12,4 +12,5 @@ end
 
 require 'taskit/issue'
 require 'taskit/filters'
+require 'taskit/display'
 require 'taskit/tasks'

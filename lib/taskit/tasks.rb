@@ -17,6 +17,7 @@ module Taskit
   # Tasks object holds and returns information on open issues
   class Tasks
     include Taskit::Filters
+    include Taskit::Display
 
     attr_reader :issues
 
