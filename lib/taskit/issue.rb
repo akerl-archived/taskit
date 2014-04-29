@@ -1,7 +1,7 @@
 ##
 # Definitions for issue objects
 module Taskit
-  ISSUE_LABEL = Struct.new(:name, :color)
+  Label = Struct.new(:name, :color)
 
   ##
   # An issue object, used to normalize the GitHub API response
@@ -32,7 +32,7 @@ module Taskit
 
     def load_state_info(raw)
       @state = raw[:state]
-      @labels = raw[:labels].map { |x| ISSUE_LABEL.new(x[:name], x[:color]) }
+      @labels = raw[:labels].map { |x| Label.new(x[:name], x[:color]) }
     end
   end
 end
