@@ -29,7 +29,7 @@ module Taskit
     def method_missing(method, *args, &block)
       var = parse_var method
       return super unless var && @issues.first.respond_to?(var)
-      instance_eval %Q(def #{method}(x) select { |i| i.#{var}.match x } end)
+      instance_eval "def #{method}(x) select { |i| i.#{var}.match x } end"
       send(method, *args, &block)
     end
   end
