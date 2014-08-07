@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'taskit'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = Time.now.strftime("%Y-%m-%d")
 
   s.summary     = ''
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.executables = ['taskit']
 
   s.add_dependency 'octokit', '~> 3.3.0'
-  s.add_dependency 'octoauth', '~> 0.0.2'
+  s.add_dependency 'octoauth', '~> 0.0.8'
   s.add_dependency 'faraday-http-cache', '~> 0.4.0'
 
   s.add_development_dependency 'rubocop', '~> 0.24.0'
