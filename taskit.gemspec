@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'octokit', '~> 3.3.0'
   s.add_dependency 'octoauth', '~> 0.0.8'
-  s.add_dependency 'faraday-http-cache', '~> 0.4.0'
+  s.add_dependency 'faraday-http-cache', '~> 0.4.2'
 
   s.add_development_dependency 'rubocop', '~> 0.25.0'
   s.add_development_dependency 'rake', '~> 10.3.2'
