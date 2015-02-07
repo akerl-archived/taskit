@@ -22,39 +22,39 @@ module Taskit
     attr_reader :issues
 
     def initialize(params = {})
-      @client = params[:client] || _client(params)
-      @issues = params[:issues] || fetch_issues
+      @options = params
+      @client = params[:client]
+      @issues = params[:issues]
     end
 
-    def fetch_issues
-      @issues = @client.issues(nil, filter: :all).map do |issue|
+    def issues
+      @issues ||= client.issues(nil, filter: :all).map do |issue|
         Taskit::Issue.new issue
       end
     end
 
     def to_s
-      "<Taskit::Tasks for #{@client.login}>"
+      "<Taskit::Tasks for #{client.login}>"
     end
     alias_method :inspect, :to_s
 
     private
 
-    def _token(params = {})
-      auth = Octoauth.new(
+    def token
+      @token ||= Octoauth.new(
         note: 'Taskit',
-        api_endpoint: params[:api_endpoint],
+        api_endpoint: @options[:api_endpoint],
         file: :default,
+        autosave: true,
         scopes: ['repo']
-      )
-      auth.save
-      auth.token
+      ).token
     end
 
-    def _client(params = {})
-      Octokit::Client.new(
-        access_token: _token(params),
-        api_endpoint: params[:api_endpoint],
-        web_endpoint: params[:api_endpoint],
+    def client
+      @client ||= Octokit::Client.new(
+        access_token: token,
+        api_endpoint: @options[:api_endpoint],
+        web_endpoint: @options[:api_endpoint],
         auto_paginate: true
       )
     end
