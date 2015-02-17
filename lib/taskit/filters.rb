@@ -29,7 +29,7 @@ module Taskit
     def method_missing(method, *args, &block)
       var = parse_var method
       return super unless var && @issues.first.respond_to?(var)
-      instance_eval "def #{method}(x) select { |i| i.#{var}.match x } end"
+      define_singleton_method(method) { |x| select { |i| i.send(var).match x } }
       send(method, *args, &block)
     end
   end
