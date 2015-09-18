@@ -1,3 +1,5 @@
+**Inactive Project:** While I was working on this, GitHub totally revamped their Issues UI to do basically what I wanted this tool to do. As such, I've replaced this tool with [this oneliner](https://github.com/akerl/dotfiles/blob/fe9baa1cf367f22e5f005571517e75db3ef2c7dd/.bundles/0_mac#L40)
+
 taskit
 =========
 
