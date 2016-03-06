@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.test_files  = `git ls-files spec/*`.split
   s.executables = ['taskit']
 
-  s.add_dependency 'octokit', '~> 4.1.0'
+  s.add_dependency 'octokit', '~> 4.3.0'
   s.add_dependency 'octoauth', '~> 1.3.0'
   s.add_dependency 'faraday-http-cache', '~> 1.2.0'
 
