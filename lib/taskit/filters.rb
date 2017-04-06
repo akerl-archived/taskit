@@ -13,7 +13,7 @@ module Taskit
       select { |issue| issue.labels.any? { |label| label.name.match input } }
     end
 
-    def respond_to?(method, include_private = false)
+    def respond_to_missing?(method, include_private = false)
       var = parse_var method
       return true if var && @issues.first.respond_to?(var)
       super

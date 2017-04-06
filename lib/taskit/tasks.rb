@@ -36,7 +36,7 @@ module Taskit
     def to_s
       "<Taskit::Tasks for #{client.login}>"
     end
-    alias_method :inspect, :to_s
+    alias inspect to_s
 
     private
 
