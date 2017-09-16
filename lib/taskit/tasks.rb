@@ -19,8 +19,6 @@ module Taskit
     include Taskit::Filters
     include Taskit::Display
 
-    attr_reader :issues
-
     def initialize(params = {})
       @options = params
       @client = params[:client]
