@@ -1,17 +1,11 @@
-language: ruby
-cache: bundler
-sudo: false
-rvm:
-- 2.2.2
-- 2.2.1
-- 2.2.0
-- 2.1.6
-- 2.0.0-p598
-- 1.9.3-p551
+dist: trusty
+install:
+- for i in $(cat .circle-ruby) ; do rvm install $i || exit 1 ; done
+- for i in $(cat .circle-ruby) ; do rvm-exec $i bundle install || exit 1 ; done
+script:
+- for i in $(cat .circle-ruby) ; do rvm-exec $i bundle exec rake || exit 1 ; done
 notifications:
   email: false
-  irc:
-    template:
-    - '%{repository}/%{branch}/%{build_number}: %{message} -- %{build_url}'
-    channels:
-    - irc.oftc.net#akerl
+  slack:
+    rooms:
+      secure: cWGkVV9Zn8FD8MQDMjTCI27Sw42NMTBBGFRXT3fqYVLbHhnJ4qZ2Wj2AKJP0/AWoFitCaLaaeSgAidA+ZbTzlNYQQbUV2o8rMH/2ASWosDEDwo7XBDO4mzNtOAZtjf7rI06nSTBkd5KtseYkBQn5iaCpsHv6B7YHE7141PgStHO8DzsizJGp3wowX7PJyyF1xiP2hSLM995cIENFyXyA/FypGrShtG5AW6T1MxFRRFhk4lO1p6qovQj6fWfXwnWw01mjJGG0/wqaMnW41Xdch/P0zw7m2L809Ri22gTLNY2id52yIGa/oUt7RcJFDp59iFp5Re0Ew4jJ4JyoWhKp/qSWBnAVgjJhv/yAJj+S0JIbjWSczxVmTvFM0bCc6HHQMWhNcuvfY6ksgwoy9joLnA95StTDIAam7F4YcR1SwduIeCoTgczsqm2xbU2QgbY5fRmlmenu9iQg2mgtyfNdi2t2TnzRkjRiWsSiZ6wJn9WYrW7U4v3SC3FI4bltWw0XLgQiH6h4DLfo6PVnbBgSoCFXbDJ+sXjVXFnk04cgblo8offrLGS4Pe9AakvL7COTuQFRV4LIerIRdrl1eGWOAExif/717139A/6zVVmLipUubYRG3DGXxgJtmt16rThg5mHs7MgSfNaGJjBPGNcUgGF4F/ytTmcbo4EW4mg6JAE=
