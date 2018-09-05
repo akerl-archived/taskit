@@ -6,7 +6,7 @@ taskit
 [![Gem Version](https://img.shields.io/gem/v/taskit.svg)](https://rubygems.org/gems/taskit)
 [![Code Climate](https://img.shields.io/codeclimate/github/akerl/taskit.svg)](https://codeclimate.com/github/akerl/taskit)
 [![Coverage Status](https://img.shields.io/coveralls/akerl/taskit.svg)](https://coveralls.io/r/akerl/taskit)
-[![Build Status](https://img.shields.io/travis/akerl/taskit.svg)](https://travis-ci.com/akerl/taskit)
+[![Build Status](https://img.shields.io/travis/com/akerl/taskit.svg)](https://travis-ci.com/akerl/taskit)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 Simple terminal display for Github issues. Mainly, this is so I can easily find something to work on from my outstanding issues.
