@@ -14,13 +14,13 @@ Gem::Specification.new do |s|
   s.test_files  = `git ls-files spec/*`.split
   s.executables = ['taskit']
 
-  s.add_dependency 'octokit', '~> 4.13.0'
-  s.add_dependency 'octoauth', '~> 1.5.5'
   s.add_dependency 'faraday-http-cache', '~> 1.2.0'
+  s.add_dependency 'octoauth', '~> 1.5.5'
+  s.add_dependency 'octokit', '~> 4.13.0'
 
-  s.add_development_dependency 'rubocop', '~> 0.60.0'
+  s.add_development_dependency 'fuubar', '~> 2.3.0'
   s.add_development_dependency 'goodcop', '~> 0.6.0'
   s.add_development_dependency 'rake', '~> 12.3.0'
   s.add_development_dependency 'rspec', '~> 3.8.0'
-  s.add_development_dependency 'fuubar', '~> 2.3.0'
+  s.add_development_dependency 'rubocop', '~> 0.60.0'
 end
